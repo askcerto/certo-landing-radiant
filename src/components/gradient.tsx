@@ -57,39 +57,39 @@ export function Gradient({
       <AuroraBlob
         className="-top-[15%] -left-[10%] h-[75%] w-[65%]"
         background="radial-gradient(circle at center, #ffffff 0%, rgba(255,255,255,0) 65%)"
-        opacity={0.85}
+        opacity={0.95}
         animate={{
-          x: ['0%', '40%', '0%'],
-          y: ['0%', '-25%', '0%'],
-          scale: [1, 1.3, 1],
+          x: ['0%', '55%', '0%'],
+          y: ['0%', '-35%', '0%'],
+          scale: [1, 1.4, 1],
         }}
-        duration={7}
+        duration={5}
         delay={0}
         shouldAnimate={shouldAnimate}
       />
       <AuroraBlob
         className="-right-[10%] -bottom-[20%] h-[80%] w-[70%]"
         background="radial-gradient(circle at center, #67e8f9 0%, rgba(103,232,249,0) 65%)"
-        opacity={0.45}
+        opacity={0.65}
         animate={{
-          x: ['0%', '-25%', '0%'],
-          y: ['0%', '15%', '0%'],
-          scale: [1, 0.88, 1],
+          x: ['0%', '-38%', '0%'],
+          y: ['0%', '25%', '0%'],
+          scale: [1, 0.82, 1],
         }}
-        duration={9}
+        duration={6.5}
         delay={0}
         shouldAnimate={shouldAnimate}
       />
       <AuroraBlob
         className="top-[25%] left-[35%] h-[55%] w-[50%]"
         background="radial-gradient(circle at center, #c7d2fe 0%, rgba(199,210,254,0) 70%)"
-        opacity={0.7}
+        opacity={0.85}
         animate={{
-          x: ['0%', '28%', '-20%', '0%'],
-          y: ['0%', '-18%', '15%', '0%'],
-          scale: [1, 1.25, 0.85, 1],
+          x: ['0%', '40%', '-30%', '0%'],
+          y: ['0%', '-28%', '22%', '0%'],
+          scale: [1, 1.35, 0.78, 1],
         }}
-        duration={7}
+        duration={5}
         delay={0}
         shouldAnimate={shouldAnimate}
       />
