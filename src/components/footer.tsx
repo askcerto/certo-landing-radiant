@@ -1,8 +1,8 @@
 import { PlusGrid, PlusGridItem, PlusGridRow } from '@/components/plus-grid'
+import { businessTypes, industries } from '@/data/solutions'
 import { SITE, URLS } from '@/utils/constants'
 import { Button } from './button'
 import { Container } from './container'
-import { Gradient } from './gradient'
 import { Link } from './link'
 import { Logo } from './logo'
 import { Subheading } from './text'
@@ -59,6 +59,33 @@ function Sitemap() {
   return (
     <>
       <div>
+        <SitemapHeading>Industries</SitemapHeading>
+        <SitemapLinks>
+          {industries.map((solution) => (
+            <SitemapLink
+              key={solution.slug}
+              href={`/solutions/industries/${solution.slug}`}
+            >
+              {solution.shortName}
+            </SitemapLink>
+          ))}
+          <SitemapLink href="/solutions">All Solutions</SitemapLink>
+        </SitemapLinks>
+      </div>
+      <div>
+        <SitemapHeading>Business Types</SitemapHeading>
+        <SitemapLinks>
+          {businessTypes.map((solution) => (
+            <SitemapLink
+              key={solution.slug}
+              href={`/solutions/business-types/${solution.slug}`}
+            >
+              {solution.shortName}
+            </SitemapLink>
+          ))}
+        </SitemapLinks>
+      </div>
+      <div>
         <SitemapHeading>Company</SitemapHeading>
         <SitemapLinks>
           <SitemapLink href="/company">About Us</SitemapLink>
@@ -69,11 +96,6 @@ function Sitemap() {
           >
             Book a Demo
           </SitemapLink>
-        </SitemapLinks>
-      </div>
-      <div>
-        <SitemapHeading>Contact</SitemapHeading>
-        <SitemapLinks>
           <SitemapLink
             href={`mailto:${SITE.EMAIL}`}
             target="_blank"
@@ -88,11 +110,6 @@ function Sitemap() {
           >
             LinkedIn
           </SitemapLink>
-        </SitemapLinks>
-      </div>
-      <div>
-        <SitemapHeading>Legal</SitemapHeading>
-        <SitemapLinks>
           <SitemapLink href="/privacy">Privacy Policy</SitemapLink>
           <SitemapLink href="/terms">Terms of Service</SitemapLink>
         </SitemapLinks>
@@ -154,38 +171,35 @@ function Copyright() {
 export function Footer() {
   return (
     <footer>
-      <Gradient className="relative">
-        <div className="absolute inset-2 rounded-4xl bg-white/80" />
-        <Container>
-          <CallToAction />
-          <PlusGrid className="pb-16">
-            <PlusGridRow>
-              <div className="grid grid-cols-2 gap-y-10 pb-6 lg:grid-cols-6 lg:gap-8">
-                <div className="col-span-2 flex">
-                  <PlusGridItem className="pt-6 lg:pb-6">
-                    <Logo className="h-9" />
-                  </PlusGridItem>
-                </div>
-                <div className="col-span-2 grid grid-cols-2 gap-x-8 gap-y-12 lg:col-span-4 lg:grid-cols-subgrid lg:pt-6">
-                  <Sitemap />
-                </div>
-              </div>
-            </PlusGridRow>
-            <PlusGridRow className="flex justify-between">
-              <div>
-                <PlusGridItem className="py-3">
-                  <Copyright />
+      <Container>
+        <CallToAction />
+        <PlusGrid className="pb-16">
+          <PlusGridRow>
+            <div className="grid grid-cols-2 gap-y-10 pb-6 lg:grid-cols-6 lg:gap-8">
+              <div className="col-span-2 flex">
+                <PlusGridItem className="pt-6 lg:pb-6">
+                  <Logo className="h-9" />
                 </PlusGridItem>
               </div>
-              <div className="flex">
-                <PlusGridItem className="flex items-center gap-8 py-3">
-                  <SocialLinks />
-                </PlusGridItem>
+              <div className="col-span-2 grid grid-cols-2 gap-x-8 gap-y-12 lg:col-span-4 lg:grid-cols-subgrid lg:pt-6">
+                <Sitemap />
               </div>
-            </PlusGridRow>
-          </PlusGrid>
-        </Container>
-      </Gradient>
+            </div>
+          </PlusGridRow>
+          <PlusGridRow className="flex justify-between">
+            <div>
+              <PlusGridItem className="py-3">
+                <Copyright />
+              </PlusGridItem>
+            </div>
+            <div className="flex">
+              <PlusGridItem className="flex items-center gap-8 py-3">
+                <SocialLinks />
+              </PlusGridItem>
+            </div>
+          </PlusGridRow>
+        </PlusGrid>
+      </Container>
     </footer>
   )
 }

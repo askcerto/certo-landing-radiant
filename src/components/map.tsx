@@ -17,9 +17,23 @@ function Marker({
     <motion.div
       variants={{
         idle: { scale: 0, opacity: 0, rotateX: 0, rotate: 0, y: 0 },
-        active: { y: [-20, 0, 4, 0], scale: [0.75, 1], opacity: [0, 1] },
+        active: {
+          scale: 1,
+          opacity: 1,
+          y: [0, -20, 0, 4, 0],
+          transition: {
+            scale: { duration: 0.4, delay, ease: 'easeOut' },
+            opacity: { duration: 0.4, delay, ease: 'easeOut' },
+            y: {
+              duration: 1,
+              delay: delay + 0.2,
+              ease: 'easeOut',
+              repeat: Infinity,
+              repeatDelay: 3,
+            },
+          },
+        },
       }}
-      transition={{ duration: 0.25, delay, ease: 'easeOut' }}
       style={{ '--offset': `${offset}px`, top } as React.CSSProperties}
       className="absolute left-[calc(50%+var(--offset))] size-[38px] drop-shadow-[0_3px_1px_rgba(0,0,0,.15)]"
     >

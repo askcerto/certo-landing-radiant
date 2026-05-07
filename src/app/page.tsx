@@ -10,6 +10,7 @@ import { LogoTimeline } from '@/components/logo-timeline'
 import { Map } from '@/components/map'
 import { Navbar } from '@/components/navbar'
 import { Screenshot } from '@/components/screenshot'
+import { SolutionsSection } from '@/components/solutions-section'
 import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
 import { VideoSection } from '@/components/video-section'
@@ -41,11 +42,11 @@ function Hero() {
         />
         <div className="pt-16 pb-24 sm:pt-24 sm:pb-32 md:pt-32 md:pb-48">
           <h1 className="font-display text-6xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.8]">
-            AI Compliance Agents
+            Stay compliant.
           </h1>
-          <p className="mt-8 max-w-lg text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
-            Certo turns ever-changing global regulations into dynamic,
-            product-specific checks, so you can move faster with less risk.
+          <p className="mt-8 max-w-xl text-xl/7 font-medium text-gray-950/75 sm:text-2xl/8">
+            Certo <strong className="font-semibold text-gray-950">AI compliance agents</strong> turns ever-<strong className="font-semibold text-gray-950">changing</strong> global <strong className="font-semibold text-gray-950">regulations</strong> into dynamic,
+            product-specific checks, so you can move <strong className="font-semibold text-gray-950">faster</strong> with <strong className="font-semibold text-gray-950">less risk</strong>.
           </p>
           <div className="mt-12 flex flex-col gap-x-6 gap-y-4 sm:flex-row">
             <Button
@@ -209,6 +210,7 @@ export default function Home() {
           <BentoSection />
         </div>
         <DarkBentoSection />
+        <SolutionsSection />
         <VideoSection />
       </main>
       <Testimonials />

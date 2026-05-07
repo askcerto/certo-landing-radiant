@@ -1,7 +1,7 @@
 'use client'
 
 import { clsx } from 'clsx'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { Subheading } from './text'
 
 export function BentoCard({
@@ -21,9 +21,11 @@ export function BentoCard({
   graphic: React.ReactNode
   fade?: ('top' | 'bottom')[]
 }) {
+  const reducedMotion = useReducedMotion()
   return (
     <motion.div
       initial="idle"
+      animate={reducedMotion ? 'idle' : 'active'}
       whileHover="active"
       variants={{ idle: {}, active: {} }}
       data-dark={dark ? 'true' : undefined}
