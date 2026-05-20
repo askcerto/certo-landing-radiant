@@ -1,5 +1,21 @@
 import { clsx } from 'clsx'
 
+// `visibility` controls how many logos show as the viewport narrows: trailing
+// logos are dropped at smaller breakpoints so the row always stays centered and
+// never wraps to a second line.
+const logos = [
+  { alt: 'Horace', src: '/logo-cloud/horace.png', visibility: '' },
+  { alt: 'Daphni', src: '/logo-cloud/daphni.png', visibility: '' },
+  { alt: 'Cosmed', src: '/logo-cloud/cosmed.png', visibility: 'hidden sm:block' },
+  { alt: 'FEBEA', src: '/logo-cloud/febea.png', visibility: 'hidden md:block' },
+  { alt: 'PCPC', src: '/logo-cloud/pcpc.png', visibility: 'hidden lg:block' },
+  {
+    alt: 'Cosmetic Valley',
+    src: '/logo-cloud/cosmetic-valley.png',
+    visibility: 'hidden xl:block',
+  },
+]
+
 export function LogoCloud({
   className,
 }: React.ComponentPropsWithoutRef<'div'>) {
@@ -7,34 +23,20 @@ export function LogoCloud({
     <div
       className={clsx(
         className,
-        'flex justify-between max-sm:mx-auto max-sm:max-w-md max-sm:flex-wrap max-sm:justify-evenly max-sm:gap-x-4 max-sm:gap-y-4',
+        'flex flex-nowrap items-center justify-center gap-x-8 sm:gap-x-10 lg:gap-x-12',
       )}
     >
-      <img
-        alt="SavvyCal"
-        src="/logo-cloud/savvycal.svg"
-        className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
-      />
-      <img
-        alt="Laravel"
-        src="/logo-cloud/laravel.svg"
-        className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
-      />
-      <img
-        alt="Tuple"
-        src="/logo-cloud/tuple.svg"
-        className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
-      />
-      <img
-        alt="Transistor"
-        src="/logo-cloud/transistor.svg"
-        className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
-      />
-      <img
-        alt="Statamic"
-        src="/logo-cloud/statamic.svg"
-        className="h-9 max-sm:mx-auto sm:h-8 lg:h-12"
-      />
+      {logos.map((logo) => (
+        <img
+          key={logo.alt}
+          alt={logo.alt}
+          src={logo.src}
+          className={clsx(
+            logo.visibility,
+            'h-12 w-auto max-w-40 object-contain opacity-70 grayscale transition duration-300 hover:opacity-100 hover:grayscale-0 sm:h-11 lg:h-14',
+          )}
+        />
+      ))}
     </div>
   )
 }

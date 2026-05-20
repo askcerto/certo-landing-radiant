@@ -5,13 +5,13 @@ import { Footer } from '@/components/footer'
 import { Gradient } from '@/components/gradient'
 import { Link } from '@/components/link'
 import { LinkedAvatars } from '@/components/linked-avatars'
+import { LogoCloud } from '@/components/logo-cloud'
 import { LogoCluster } from '@/components/logo-cluster'
 import { LogoTimeline } from '@/components/logo-timeline'
 import { Map } from '@/components/map'
 import { Navbar } from '@/components/navbar'
 import { Screenshot } from '@/components/screenshot'
 import { SolutionsSection } from '@/components/solutions-section'
-import { Testimonials } from '@/components/testimonials'
 import { Heading, Subheading } from '@/components/text'
 import { VideoSection } from '@/components/video-section'
 import { ChevronRightIcon } from '@heroicons/react/16/solid'
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 function Hero() {
   return (
     <div className="relative">
-      <Gradient className="absolute inset-2 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
+      <Gradient className="absolute inset-0 ring-1 ring-black/5 ring-inset" />
       <Container className="relative">
         <Navbar
           banner={
@@ -35,7 +35,7 @@ function Hero() {
               rel="noopener noreferrer"
               className="flex items-center gap-1 rounded-full bg-fuchsia-950/35 px-3 py-0.5 text-sm/6 font-medium text-white data-hover:bg-fuchsia-950/30"
             >
-              Book a demo - see Certo&apos;s compliance checks in action
+              Book a demo
               <ChevronRightIcon className="size-4" />
             </Link>
           }
@@ -84,6 +84,271 @@ function FeatureSection() {
   )
 }
 
+function UploadDocumentAnimation() {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-white to-gray-50">
+      <svg
+        viewBox="0 0 240 200"
+        className="h-full w-full max-w-[280px]"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Upload tray */}
+        <rect
+          x="50"
+          y="120"
+          width="140"
+          height="60"
+          rx="10"
+          className="fill-gray-100 stroke-gray-300"
+          strokeWidth="2"
+        />
+        <path
+          d="M70 150 h20 M70 162 h40"
+          className="stroke-gray-300"
+          strokeWidth="3"
+          strokeLinecap="round"
+        />
+
+        {/* Document floating up */}
+        <g>
+          <animateTransform
+            attributeName="transform"
+            type="translate"
+            values="0 30; 0 -6; 0 30"
+            keyTimes="0; 0.5; 1"
+            dur="3s"
+            repeatCount="indefinite"
+            calcMode="spline"
+            keySplines="0.4 0 0.2 1; 0.4 0 0.2 1"
+          />
+          <rect
+            x="92"
+            y="40"
+            width="56"
+            height="72"
+            rx="6"
+            className="fill-white stroke-blue-500"
+            strokeWidth="2.5"
+          />
+          {/* folded corner */}
+          <path
+            d="M134 40 v14 h14"
+            className="stroke-blue-500"
+            strokeWidth="2.5"
+            fill="none"
+          />
+          {/* text lines */}
+          <path
+            d="M102 64 h28 M102 74 h36 M102 84 h36 M102 94 h22"
+            className="stroke-blue-200"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        </g>
+      </svg>
+    </div>
+  )
+}
+
+function FormulaCheckAnimation() {
+  const rows = [
+    { cy: 56, len: 92 },
+    { cy: 86, len: 78 },
+    { cy: 116, len: 68 },
+  ]
+  // each check draws during a 15% slice of the 4.5s loop, then holds, then resets
+  const drawKeys = [
+    { values: '1; 0; 0; 1', keyTimes: '0; 0.15; 0.9; 1' },
+    { values: '1; 1; 0; 0; 1', keyTimes: '0; 0.15; 0.3; 0.9; 1' },
+    { values: '1; 1; 0; 0; 1', keyTimes: '0; 0.3; 0.45; 0.9; 1' },
+  ]
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-white to-gray-50">
+      <svg
+        viewBox="0 0 240 200"
+        className="h-full w-full max-w-[280px]"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {rows.map((row, i) => (
+          <g key={i}>
+            {/* check badge */}
+            <circle
+              cx="57"
+              cy={row.cy}
+              r="12"
+              className="fill-blue-50 stroke-blue-200"
+              strokeWidth="2"
+            />
+            <path
+              d={`M51 ${row.cy} l4 5 l9 -11`}
+              className="stroke-blue-500"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              pathLength={1}
+              strokeDasharray={1}
+            >
+              <animate
+                attributeName="stroke-dashoffset"
+                values={drawKeys[i].values}
+                keyTimes={drawKeys[i].keyTimes}
+                dur="4.5s"
+                repeatCount="indefinite"
+              />
+            </path>
+            {/* label line */}
+            <path
+              d={`M82 ${row.cy} h${row.len}`}
+              className="stroke-gray-200"
+              strokeWidth="6"
+              strokeLinecap="round"
+            />
+          </g>
+        ))}
+
+        {/* citation callout */}
+        <g>
+          <animate
+            attributeName="opacity"
+            values="0; 0; 1; 1; 0"
+            keyTimes="0; 0.45; 0.55; 0.9; 1"
+            dur="4.5s"
+            repeatCount="indefinite"
+          />
+          <rect
+            x="46"
+            y="140"
+            width="148"
+            height="34"
+            rx="8"
+            className="fill-white stroke-blue-200"
+            strokeWidth="2"
+          />
+          <circle cx="62" cy="157" r="4" className="fill-blue-500" />
+          <text
+            x="76"
+            y="161"
+            className="fill-blue-600"
+            fontSize="12"
+            fontFamily="ui-sans-serif, system-ui, sans-serif"
+            fontWeight="500"
+          >
+            cites: Annex V §3
+          </text>
+        </g>
+      </svg>
+    </div>
+  )
+}
+
+function GenerateFilesAnimation() {
+  const outputs = [
+    {
+      cy: 48,
+      label: 'SDS',
+      conn: { values: '1; 0; 0; 1', keyTimes: '0; 0.13; 0.9; 1' },
+      card: { values: '0; 0; 1; 1; 0', keyTimes: '0; 0.13; 0.2; 0.9; 1' },
+    },
+    {
+      cy: 100,
+      label: 'DIP',
+      conn: { values: '1; 1; 0; 0; 1', keyTimes: '0; 0.2; 0.33; 0.9; 1' },
+      card: { values: '0; 0; 1; 1; 0', keyTimes: '0; 0.33; 0.4; 0.9; 1' },
+    },
+    {
+      cy: 152,
+      label: 'PIF',
+      conn: { values: '1; 1; 0; 0; 1', keyTimes: '0; 0.4; 0.53; 0.9; 1' },
+      card: { values: '0; 0; 1; 1; 0', keyTimes: '0; 0.53; 0.6; 0.9; 1' },
+    },
+  ]
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-white to-gray-50">
+      <svg
+        viewBox="0 0 240 200"
+        className="h-full w-full max-w-[280px]"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* connectors (drawn first so cards sit on top) */}
+        {outputs.map((o, i) => (
+          <path
+            key={`c-${i}`}
+            d={`M68 100 C110 100, 110 ${o.cy}, 148 ${o.cy}`}
+            className="stroke-blue-300"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            pathLength={1}
+            strokeDasharray={1}
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              values={o.conn.values}
+              keyTimes={o.conn.keyTimes}
+              dur="4.5s"
+              repeatCount="indefinite"
+            />
+          </path>
+        ))}
+
+        {/* source data file */}
+        <g>
+          <rect
+            x="22"
+            y="72"
+            width="46"
+            height="58"
+            rx="6"
+            className="fill-blue-500 stroke-blue-500"
+            strokeWidth="2"
+          />
+          <path
+            d="M31 88 h28 M31 98 h28 M31 108 h20"
+            className="stroke-white/80"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        </g>
+
+        {/* output files */}
+        {outputs.map((o, i) => (
+          <g key={`o-${i}`}>
+            <animate
+              attributeName="opacity"
+              values={o.card.values}
+              keyTimes={o.card.keyTimes}
+              dur="4.5s"
+              repeatCount="indefinite"
+            />
+            <rect
+              x="150"
+              y={o.cy - 16}
+              width="68"
+              height="32"
+              rx="7"
+              className="fill-white stroke-blue-300"
+              strokeWidth="2"
+            />
+            <circle cx="166" cy={o.cy} r="4" className="fill-blue-500" />
+            <text
+              x="178"
+              y={o.cy + 5}
+              className="fill-blue-700"
+              fontSize="14"
+              fontFamily="ui-sans-serif, system-ui, sans-serif"
+              fontWeight="600"
+            >
+              {o.label}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  )
+}
+
 function BentoSection() {
   return (
     <Container>
@@ -97,9 +362,7 @@ function BentoSection() {
           eyebrow="Ingestion"
           title="Turn files into facts"
           description="Upload product and regulatory documents. Certo extracts and structures key data, from ingredients and CAS to claims and certificates, then validates it against applicable rules with exact source citations."
-          graphic={
-            <div className="absolute inset-0 bg-[url(/screenshots/profile.png)] bg-size-[792px_446px] bg-position-[left_-210px_top_-80px] bg-no-repeat sm:bg-position-[left_-50px_top_-80px]" />
-          }
+          graphic={<UploadDocumentAnimation />}
           fade={['bottom']}
           className="max-lg:rounded-t-4xl lg:col-span-3 lg:rounded-tl-4xl"
         />
@@ -107,9 +370,7 @@ function BentoSection() {
           eyebrow="Formula"
           title="Explainable formula checks"
           description="Check ingredients and totals against market rules with detailed justifications. Each issue includes the relevant regulation and rule citation to support fast, confident decisions."
-          graphic={
-            <div className="absolute inset-0 bg-[url(/screenshots/competitors.png)] bg-size-[800px_465px] bg-position-[left_-38px_top_-25px] bg-no-repeat" />
-          }
+          graphic={<FormulaCheckAnimation />}
           fade={['bottom']}
           className="lg:col-span-3 lg:rounded-tr-4xl"
         />
@@ -117,9 +378,7 @@ function BentoSection() {
           eyebrow="Documents"
           title="Auto-generate compliance files"
           description="Generate regulator-grade documents like SDS, PIF, and CPSR with required data and citations for submissions."
-          graphic={
-            <div className="absolute inset-0 bg-[url(/screenshots/down-land.png)] bg-size-[825px_465px] bg-position-[left_-10px_top_-45px] bg-no-repeat" />
-          }
+          graphic={<GenerateFilesAnimation />}
           fade={['bottom']}
           className="lg:col-span-2 lg:rounded-bl-4xl"
         />
@@ -144,7 +403,7 @@ function BentoSection() {
 
 function DarkBentoSection() {
   return (
-    <div className="mx-2 mt-2 rounded-4xl bg-gray-900 py-32">
+    <div className="mt-2 bg-gray-900 py-32">
       <Container>
         <Subheading dark>Operations</Subheading>
         <Heading as="h3" dark className="mt-2 max-w-3xl">
@@ -202,9 +461,9 @@ export default function Home() {
     <div className="overflow-hidden">
       <Hero />
       <main>
-        {/* <Container className="mt-10">
+        <Container className="mt-[90px]">
           <LogoCloud />
-        </Container> */}
+        </Container>
         <div className="bg-linear-to-b from-white from-50% to-gray-100 py-32">
           <FeatureSection />
           <BentoSection />
@@ -213,7 +472,6 @@ export default function Home() {
         <SolutionsSection />
         <VideoSection />
       </main>
-      <Testimonials />
       <Footer />
     </div>
   )
