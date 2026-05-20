@@ -4,6 +4,7 @@ import { clsx } from 'clsx'
 // logos are dropped at smaller breakpoints so the row always stays centered and
 // never wraps to a second line.
 const logos = [
+  { alt: 'Carrefour', src: '/logo-cloud/carrefour.png', visibility: '' },
   { alt: 'Horace', src: '/logo-cloud/horace.png', visibility: '' },
   { alt: 'Daphni', src: '/logo-cloud/daphni.png', visibility: '' },
   { alt: 'Cosmed', src: '/logo-cloud/cosmed.png', visibility: 'hidden sm:block' },
