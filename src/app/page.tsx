@@ -402,6 +402,163 @@ function BentoSection() {
   )
 }
 
+function RawMaterialsAnimation() {
+  // supplier docs on the left feed into the central unified record
+  const docs = [
+    { y: 22, conn: 'M62 44 C108 44, 108 100, 152 100' },
+    { y: 78, conn: 'M62 100 H152' },
+    { y: 134, conn: 'M62 156 C108 156, 108 100, 152 100' },
+  ]
+  const connKeys = [
+    { values: '1; 0; 0; 1', keyTimes: '0; 0.12; 0.9; 1' },
+    { values: '1; 1; 0; 0; 1', keyTimes: '0; 0.12; 0.24; 0.9; 1' },
+    { values: '1; 1; 0; 0; 1', keyTimes: '0; 0.24; 0.36; 0.9; 1' },
+  ]
+  // each unified row fills in once its supplier doc has connected
+  const rows = [
+    { cy: 96, status: 'fill-emerald-400', rowKeys: '0; 0.14; 0.2; 0.9; 1' },
+    { cy: 122, status: 'fill-amber-400', rowKeys: '0; 0.26; 0.32; 0.9; 1' },
+    { cy: 148, status: 'fill-emerald-400', rowKeys: '0; 0.38; 0.44; 0.9; 1' },
+  ]
+  return (
+    <div className="absolute inset-0 flex items-center justify-center bg-linear-to-b from-gray-900 to-gray-800">
+      <svg
+        viewBox="0 0 360 200"
+        className="h-full w-full max-w-[460px]"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* connectors (drawn first so the panel sits on top) */}
+        {docs.map((d, i) => (
+          <path
+            key={`c-${i}`}
+            d={d.conn}
+            className="stroke-blue-400"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            pathLength={1}
+            strokeDasharray={1}
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              values={connKeys[i].values}
+              keyTimes={connKeys[i].keyTimes}
+              dur="4.5s"
+              repeatCount="indefinite"
+            />
+          </path>
+        ))}
+
+        {/* supplier documents */}
+        {docs.map((d, i) => (
+          <g key={`d-${i}`}>
+            <rect
+              x="18"
+              y={d.y}
+              width="44"
+              height="44"
+              rx="6"
+              className="fill-white/5 stroke-white/15"
+              strokeWidth="1.5"
+            />
+            <circle cx="30" cy={d.y + 12} r="3" className="fill-blue-400" />
+            <path
+              d={`M40 ${d.y + 12} h12 M27 ${d.y + 24} h25 M27 ${d.y + 32} h18`}
+              className="stroke-white/20"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+            />
+          </g>
+        ))}
+
+        {/* unified record panel */}
+        <rect
+          x="152"
+          y="36"
+          width="172"
+          height="128"
+          rx="12"
+          className="fill-white/5 stroke-white/15"
+          strokeWidth="1.5"
+        />
+        {/* INCI tag */}
+        <rect
+          x="166"
+          y="50"
+          width="46"
+          height="20"
+          rx="6"
+          className="fill-blue-500/20 stroke-blue-400/40"
+          strokeWidth="1"
+        />
+        <text
+          x="189"
+          y="64"
+          textAnchor="middle"
+          className="fill-blue-300"
+          fontSize="10"
+          fontFamily="ui-sans-serif, system-ui, sans-serif"
+          fontWeight="600"
+        >
+          INCI
+        </text>
+        {/* version badge */}
+        <g>
+          <animate
+            attributeName="opacity"
+            values="0; 0; 1; 1; 0"
+            keyTimes="0; 0.5; 0.56; 0.9; 1"
+            dur="4.5s"
+            repeatCount="indefinite"
+          />
+          <rect
+            x="280"
+            y="50"
+            width="30"
+            height="20"
+            rx="6"
+            className="fill-white/10"
+          />
+          <text
+            x="295"
+            y="64"
+            textAnchor="middle"
+            className="fill-gray-300"
+            fontSize="10"
+            fontFamily="ui-sans-serif, system-ui, sans-serif"
+            fontWeight="600"
+          >
+            v3
+          </text>
+        </g>
+
+        {/* unified data rows */}
+        {rows.map((r, i) => (
+          <g key={`r-${i}`}>
+            <animate
+              attributeName="opacity"
+              values="0; 0; 1; 1; 0"
+              keyTimes={r.rowKeys}
+              dur="4.5s"
+              repeatCount="indefinite"
+            />
+            <circle cx="172" cy={r.cy} r="4" className="fill-blue-400" />
+            <rect
+              x="186"
+              y={r.cy - 3}
+              width="86"
+              height="6"
+              rx="3"
+              className="fill-white/10"
+            />
+            <circle cx="300" cy={r.cy} r="4" className={r.status} />
+          </g>
+        ))}
+      </svg>
+    </div>
+  )
+}
+
 function DarkBentoSection() {
   return (
     <div className="mt-2 bg-gray-900 py-32">
@@ -417,9 +574,7 @@ function DarkBentoSection() {
             eyebrow="Materials"
             title="Manage raw materials"
             description="Ingest supplier documents, structure key data, and unify records by INCI and supplier. Surface compliance gaps across allergens, constituents, and impurities while tracking versions, approvals, and a full audit trail."
-            graphic={
-              <div className="h-80 bg-[url(/screenshots/networking.png)] bg-size-[851px_344px] bg-no-repeat" />
-            }
+            graphic={<RawMaterialsAnimation />}
             fade={['top']}
             className="max-lg:rounded-t-4xl lg:col-span-4 lg:rounded-tl-4xl"
           />
