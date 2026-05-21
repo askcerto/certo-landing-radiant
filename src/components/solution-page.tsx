@@ -12,7 +12,7 @@ import { ChevronRightIcon } from '@heroicons/react/16/solid'
 function Hero({ solution }: { solution: SolutionContent }) {
   return (
     <div className="relative">
-      <Gradient className="absolute inset-2 bottom-0 rounded-4xl ring-1 ring-black/5 ring-inset" />
+      <Gradient className="absolute inset-0 ring-1 ring-black/5 ring-inset" />
       <Container className="relative">
         <Navbar
           banner={
