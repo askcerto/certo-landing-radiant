@@ -29,12 +29,12 @@ export const industries: SolutionContent[] = [
   {
     slug: 'cosmetics',
     category: 'industry',
-    name: 'Cosmetics & Personal Care',
-    shortName: 'Cosmetics',
+    name: 'Personal Care',
+    shortName: 'Personal Care',
     tagline:
       'AI compliance for cosmetic formulators, brand owners, and contract manufacturers.',
     hero: {
-      eyebrow: 'Industry · Cosmetics',
+      eyebrow: 'Industry · Personal Care',
       title: 'Cosmetic compliance, automated end-to-end',
       description:
         'From INCI verification and allergen disclosure to PIF generation and CPNP notification, Certo turns cosmetic regulations into live, product-specific checks across EU, UK, US, ASEAN, and beyond.',
@@ -317,12 +317,12 @@ export const businessTypes: SolutionContent[] = [
   {
     slug: 'brand-owner',
     category: 'business-type',
-    name: 'Brand Owners',
-    shortName: 'Brand Owner',
+    name: 'Brands',
+    shortName: 'Brand',
     tagline:
       'Launch faster across more markets without compounding regulatory risk.',
     hero: {
-      eyebrow: 'Business · Brand Owner',
+      eyebrow: 'Business · Brand',
       title: 'Compliance as a launch accelerator, not a gate',
       description:
         'Certo gives brand teams a single source of truth for formulas, claims, and market readiness, so R&D, regulatory, marketing, and supply chain stop blocking each other.',
