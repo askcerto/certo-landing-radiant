@@ -260,6 +260,7 @@ function GenerateFilesAnimation() {
     {
       cy: 152,
       label: 'CPSR',
+      width: 80,
       conn: { values: '1; 1; 0; 0; 1', keyTimes: '0; 0.4; 0.53; 0.9; 1' },
       card: { values: '0; 0; 1; 1; 0', keyTimes: '0; 0.53; 0.6; 0.9; 1' },
     },
@@ -325,7 +326,7 @@ function GenerateFilesAnimation() {
             <rect
               x="150"
               y={o.cy - 16}
-              width="68"
+              width={o.width ?? 68}
               height="32"
               rx="7"
               className="fill-white stroke-blue-300"
