@@ -44,8 +44,9 @@ function Marker({
         />
         <path
           d="m28.9 25.698-9.9 9.9-9.9-9.9C3.634 20.232 3.634 11.367 9.1 5.9 14.569.432 23.433.432 28.9 5.9c5.467 5.468 5.467 14.332 0 19.8Z"
-          className="fill-white"
+          className="fill-blue-500"
         />
+        <circle cx="19" cy="16" r="11" className="fill-white" />
       </svg>
       <span className="absolute top-[4px] left-[7px] flex size-6 items-center justify-center text-xs">
         {emoji}
@@ -56,7 +57,10 @@ function Marker({
 
 export function Map() {
   return (
-    <div aria-hidden="true" className="relative size-full">
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 overflow-hidden bg-linear-to-b from-white to-gray-50"
+    >
       <div className="absolute inset-0 bg-[url(/map.png)] mask-[linear-gradient(to_bottom,black_50%,transparent)] bg-size-[530px_430px] bg-position-[center_-75px] bg-no-repeat" />
       <div className="absolute inset-0">
         <Marker emoji="✅" top={75} offset={-128} delay={0.15} />
