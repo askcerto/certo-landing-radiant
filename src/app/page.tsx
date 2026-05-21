@@ -259,7 +259,7 @@ function GenerateFilesAnimation() {
     },
     {
       cy: 152,
-      label: 'PIF',
+      label: 'CPSR',
       conn: { values: '1; 1; 0; 0; 1', keyTimes: '0; 0.4; 0.53; 0.9; 1' },
       card: { values: '0; 0; 1; 1; 0', keyTimes: '0; 0.53; 0.6; 0.9; 1' },
     },
