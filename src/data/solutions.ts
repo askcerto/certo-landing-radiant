@@ -4,6 +4,7 @@ export type SolutionContent = {
   name: string
   shortName: string
   tagline: string
+  menuBlurb?: string
   hero: {
     eyebrow: string
     title: string
@@ -33,6 +34,8 @@ export const industries: SolutionContent[] = [
     shortName: 'Personal Care',
     tagline:
       'AI compliance for cosmetic formulators, brand owners, and contract manufacturers.',
+    menuBlurb:
+      'Haircare, Skincare, Oral Care, Body Hygiene & Grooming, Fragrances, …',
     hero: {
       eyebrow: 'Industry · Personal Care',
       title: 'Cosmetic compliance, automated end-to-end',
@@ -90,6 +93,8 @@ export const industries: SolutionContent[] = [
     shortName: 'Supplements',
     tagline:
       'AI compliance for dietary supplement, nutraceutical, and functional food brands.',
+    menuBlurb:
+      'Vitamins & Minerals, Botanicals & Herbals, Functional Nutrients, Sports & Weight Management, …',
     hero: {
       eyebrow: 'Industry · Supplements',
       title: 'Supplement compliance without the regulatory bottleneck',
@@ -147,6 +152,8 @@ export const industries: SolutionContent[] = [
     shortName: 'Pet & Animal',
     tagline:
       'AI compliance for pet food, animal health, and animal nutrition brands.',
+    menuBlurb:
+      'Nutrition (food, treats, supplements), Health & Veterinary Care, Hygiene & Grooming, Accessories & Equipment, …',
     hero: {
       eyebrow: 'Industry · Pet & Animal',
       title: 'Pet and animal compliance built for global launches',
@@ -194,6 +201,124 @@ export const industries: SolutionContent[] = [
         title: 'Multi-market label compliance',
         description:
           'Verify guaranteed analyses, ingredient lists, and feeding directions match formula records and regional formats.',
+      },
+    ],
+  },
+  {
+    slug: 'flavors-fragrances',
+    category: 'industry',
+    name: 'Flavors & Fragrances',
+    shortName: 'Flavors & Fragrances',
+    tagline:
+      'AI compliance for flavor houses, fragrance creators, and aroma ingredient suppliers.',
+    menuBlurb:
+      'Flavors, Fine Fragrances, Functional Fragrances, Aroma Ingredients & Raw Materials',
+    hero: {
+      eyebrow: 'Industry · Flavors & Fragrances',
+      title: 'Flavor and fragrance compliance, citation by citation',
+      description:
+        'From IFRA standards and allergen disclosure to FEMA GRAS status and REACH registration, Certo turns flavor and fragrance regulations into live, ingredient-level checks across every target market.',
+    },
+    challenges: [
+      {
+        title: 'IFRA standards in constant motion',
+        description:
+          'Restriction levels, prohibitions, and specifications shift with each IFRA amendment. Keeping every formula aligned to the latest standard by application category is relentless manual work.',
+      },
+      {
+        title: 'Allergen and disclosure complexity',
+        description:
+          'EU fragrance allergen lists keep expanding, and each declared substance has to be traced through compound formulas down to the raw material.',
+      },
+      {
+        title: 'Fragmented ingredient status',
+        description:
+          'FEMA GRAS, REACH, TSCA, and food-additive approvals each define what an aroma chemical can be used for, where, and at what level, with little overlap between regimes.',
+      },
+    ],
+    capabilities: [
+      {
+        eyebrow: 'Formulas',
+        title: 'IFRA conformity screening',
+        description:
+          'Check every compound against the current IFRA standard by product category, with rule-level citations and the maximum permitted levels surfaced automatically.',
+      },
+      {
+        eyebrow: 'Allergens',
+        title: 'Allergen breakdown and disclosure',
+        description:
+          'Trace declarable allergens through multi-level compositions and generate the disclosure statements required per market.',
+      },
+      {
+        eyebrow: 'Ingredients',
+        title: 'Regulatory status mapping',
+        description:
+          'Cross-reference each aroma ingredient against FEMA GRAS, REACH registration, TSCA inventory, and food-additive positive lists.',
+      },
+      {
+        eyebrow: 'Documents',
+        title: 'IFRA and allergen certificate generation',
+        description:
+          'Auto-compile IFRA conformity certificates, allergen declarations, and safety documentation from your formula and raw-material records.',
+      },
+    ],
+  },
+  {
+    slug: 'home-care',
+    category: 'industry',
+    name: 'Home Care',
+    shortName: 'Home Care',
+    tagline:
+      'AI compliance for cleaning, laundry, and household product manufacturers.',
+    menuBlurb:
+      'Laundry & Fabric Care, Dishwashing, Surface Care, Air Care, Pest Control, …',
+    hero: {
+      eyebrow: 'Industry · Home Care',
+      title: 'Home care compliance across every formula and market',
+      description:
+        'From CLP classification and detergent ingredient disclosure to biocidal product authorization, Certo turns home care regulations into live, product-specific checks across EU, UK, US, and beyond.',
+    },
+    challenges: [
+      {
+        title: 'Classification and labeling burden',
+        description:
+          'CLP and GHS hazard classification, signal words, and pictograms have to stay aligned with the formula and reflect every raw-material update.',
+      },
+      {
+        title: 'Detergent and ingredient disclosure',
+        description:
+          'EU Detergents Regulation, ingredient data sheets, and online disclosure requirements demand structured ingredient information that is kept current by market.',
+      },
+      {
+        title: 'Biocides under separate regimes',
+        description:
+          'Disinfectants, air fresheners, and pest-control products cross into BPR and EPA FIFRA territory, each with its own active-substance approval and authorization path.',
+      },
+    ],
+    capabilities: [
+      {
+        eyebrow: 'Formulas',
+        title: 'CLP and GHS classification checks',
+        description:
+          'Classify formulas against CLP and GHS criteria and validate that hazard statements, pictograms, and signal words match the composition.',
+      },
+      {
+        eyebrow: 'Ingredients',
+        title: 'Restricted substance screening',
+        description:
+          'Check ingredients against the Detergents Regulation, REACH restrictions, and retailer restricted-substance lists with rule-level citations.',
+      },
+      {
+        eyebrow: 'Biocides',
+        title: 'Biocidal product boundary checks',
+        description:
+          'Flag claims and actives that trigger BPR or EPA FIFRA authorization before a product reaches packaging or marketing.',
+      },
+      {
+        eyebrow: 'Documents',
+        title: 'SDS and disclosure generation',
+        description:
+          'Auto-compile safety data sheets, detergent ingredient data sheets, and online disclosure pages from your supplier and formula records.',
       },
     ],
   },

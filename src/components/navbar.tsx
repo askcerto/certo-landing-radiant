@@ -46,7 +46,7 @@ function SolutionsMenu() {
                       {solution.shortName}
                     </span>
                     <span className="text-xs/5 text-gray-500 group-data-hover:text-gray-700">
-                      {solution.tagline}
+                      {solution.menuBlurb ?? solution.tagline}
                     </span>
                   </Link>
                 </li>
