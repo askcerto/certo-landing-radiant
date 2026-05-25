@@ -1,3 +1,4 @@
+import { Banner } from '@/components/banner'
 import { SanityLive } from '@/sanity/live'
 import { revalidateSyncTags } from '@/sanity/revalidateSyncTags'
 import '@/styles/tailwind.css'
@@ -30,6 +31,7 @@ export default function RootLayout({
         />
       </head>
       <body className="text-gray-950 antialiased">
+        <Banner />
         {children}
         <SanityLive revalidateSyncTags={revalidateSyncTags} />
       </body>
